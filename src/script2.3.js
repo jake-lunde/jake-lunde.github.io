@@ -15,17 +15,18 @@ let message = document.getElementById('endGameMessage');
 
     // Generate word pairs for each round
     const difficultyRange = [
-      { min: 3000, max: 5000 },
-      { min: 2500, max: 4000 },
-      { min: 1500, max: 2500 },
-      { min: 1200, max: 1800 },
-      { min: 900, max: 1300 },
-      { min: 600, max: 1200 },
-      { min: 400, max: 750 },
-      { min: 200, max: 400 },
-      { min: 75, max: 125 },
-      { min: 50, max: 100 }
-    ];
+    { min: 600, max: 1200 }, 
+    { min: 560, max: 1120 }, 
+    { min: 520, max: 1040 },
+    { min: 480, max: 960 }, 
+    { min: 440, max: 880 }, 
+    { min: 400, max: 800 },
+    { min: 300, max: 600 },
+    { min: 200, max: 400 },
+    { min: 100, max: 200 },
+    { min: 50, max: 100 }
+];
+
 
 //FETCH WORDS----------------------------------------------------------------------------------
 
