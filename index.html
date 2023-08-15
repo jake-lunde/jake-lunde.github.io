@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/style.css">
+  </head>
+<body>
+  <button id="startButton">Start Game</button>
+    <div class="container">
+      <div id="endGameMessage"></div>
+      <div class="row">
+        <div id="timer">00:00:00</div>
+        <div id="times"></div>
+      </div>
+      <div class="row">
+        <div class="square" data-letter="letter1"></div>
+        <div class="square" data-letter="letter2"></div>
+        <div class="square" data-letter="letter3"></div>
+        <div class="square" data-letter="letter4"></div>
+        <div class="square" data-letter="letter5"></div>
+      </div>
+      <form class="form" id="inputForm">
+        <input type="text" id="letter1" maxlength="1" name="letter1" required>
+        <input type="text" id="letter2" maxlength="1" name="letter2" required>
+        <input type="text" id="letter3" maxlength="1" name="letter3" required>
+        <input type="text" id="letter4" maxlength="1" name="letter4" required>
+        <input type="text" id="letter5" maxlength="1" name="letter5" required>
+        <button type="submit">Submit</button>
+      </form>
+      <div class="row">
+        <div class="square" data-letter="letter6"></div>
+        <div class="square" data-letter="letter7"></div>
+        <div class="square" data-letter="letter8"></div>
+        <div class="square" data-letter="letter9"></div>
+        <div class="square" data-letter="letter10"></div>
+      </div>
+    </div>
+
+    <script src="src/seedrandom.js"></script>
+    <script src="src/script2.3.js"></script>
+  </body>
+</html>
