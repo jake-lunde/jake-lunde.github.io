@@ -35,8 +35,24 @@
         <div class="square" data-letter="letter9"></div>
         <div class="square" data-letter="letter10"></div>
       </div>
+        <div id="results">
+    <div id="totalTime"></div>
+    <form
+        method="POST" 
+        action="https://script.google.com/macros/s/AKfycby13UMJ1GUZIzpMQPT_hLPeVVsWDdGNMVl7Dxsh2-qJ_G4ZCSW2LjSI0oZiiXFdhbzk/exec"
+        id="submitScoreForm"
+        style="display: none;"
+    >
+        <input name="Score" id="Score" type="hidden"> <!-- We'll store the emoji score here -->
+        <input name="Time" id="Time" type="hidden"> <!-- We'll store the total time taken here -->
+        <input name="Name" type="text" placeholder="Name" required>
+        <button type="submit">Send Score</button>
+    </form>
+</div>
+<div id="successMessage" style="display: none;">
+    Thanks for playtesting Word Burger!
+</div>
     </div>
-
     <script src="src/seedrandom.js"></script>
     <script src="src/script2.3.js"></script>
   </body>

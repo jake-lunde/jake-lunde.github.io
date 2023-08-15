@@ -198,9 +198,8 @@ function formatTime(time) {
   return `${secondsStringPadded}.${hundredthsStringPadded}`;
 }
 
-  function endGame() {
+function endGame() {
     clearInterval(timerInterval);
-    clickEnabled = false;
 
     let resultsMessage = "Nice Job!<br>";
 
@@ -223,8 +222,48 @@ function formatTime(time) {
     const form = document.querySelector('.form');
     Array.from(squares).forEach(square => square.style.display = 'none');
     form.style.display = 'none';
-    timerElement.style.display = 'none'; // Show the timer element
+    timerElement.style.display = 'none'; // Hide the timer element
+
+    // Display the total time taken
+    document.getElementById("totalTime").textContent = `Total Time: ${formatTime((60 - time) * 1000)}`;
+
+    // Populate the hidden form fields with data
+    document.getElementById("Score").value = resultsMessage;
+    document.getElementById("Time").value = `${formatTime((60 - time) * 1000)} S`
+
+    // Show the form for submitting score
+    const submitScoreForm = document.getElementById("submitScoreForm");
+    submitScoreForm.style.display = "flex";
+
+    // Prevent the form from redirecting
+submitScoreForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Fetch form data
+    const formData = new FormData(submitScoreForm);
+
+    // Send the form data using fetch to your desired endpoint
+    fetch('https://script.google.com/macros/s/AKfycby13UMJ1GUZIzpMQPT_hLPeVVsWDdGNMVl7Dxsh2-qJ_G4ZCSW2LjSI0oZiiXFdhbzk/exec', { // Replace '/your-submission-endpoint' with your actual endpoint
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("Thanks for playtesting Word Burger!");
+        // Handle the response from the server here, if needed.
+        console.log(data);
+                // Refresh the page
+        window.location.reload();
+    })
+    .catch(error => {
+        console.error("There was an error submitting the form:", error);
+        alert("Oops, there was an error submitting your form. Please try again.");
+    });
+});
+
 }
+
+
 
 
 //START ROUND----------------------------------------------------------------------------------
