@@ -249,7 +249,7 @@ submitScoreForm.addEventListener("submit", function(event) {
     })
     .then(response => response.json())
     .then(data => {
-        alert("Thanks for playtesting Word Burger!");
+        alert("Thanks for playtesting Word Burger! Come back tomorrow to flip some more burgers!");
         // Handle the response from the server here, if needed.
         console.log(data);
                 // Refresh the page
