@@ -99,10 +99,20 @@ function generateWordPairs(allWords, difficultyRange) {
     return wordPairs;
 }
 
+//DETECT SCREEN----------------------------------------------------------------------------------
+function isMobileDevice() {
+    return /Android|iPhone|iPad/i.test(window.navigator.userAgent);
+}
 
 
 //START GAME----------------------------------------------------------------------------------
 async function startGame() {
+    if (isMobileDevice()) {
+        const firstTextField = document.querySelector('input[type="text"]');
+        if (firstTextField) {
+            firstTextField.focus();
+        }
+    }
     // First, fetch the words and wait until they're loaded
     await fetchWords();
     console.log("All words after fetching:", allWords);
