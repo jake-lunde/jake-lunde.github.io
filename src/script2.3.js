@@ -12,6 +12,8 @@ const TIMER_INTERVAL = 100;
 const date = new Date();
 const seed = date.getFullYear() * 365 + date.getMonth() * 30 + date.getDate();
 let message = document.getElementById('endGameMessage');
+document.getElementById('gamePlay').style.display = 'none'; // Hide the game elements initially
+
 
     // Generate word pairs for each round
     const difficultyRange = [
@@ -107,24 +109,30 @@ function isMobileDevice() {
 
 //START GAME----------------------------------------------------------------------------------
 async function startGame() {
-    if (isMobileDevice()) {
-    setTimeout(() => {
-        const firstTextField = document.querySelector('input[type="text"]');
-        if (firstTextField) {
-            firstTextField.focus();
-        }
-    }, 100);
-}
-
-    // First, fetch the words and wait until they're loaded
     await fetchWords();
     console.log("All words after fetching:", allWords);
 
+    setupGame();
+
+    if (isMobileDevice()) {
+        const firstTextField = document.querySelector('input[type="text"]');
+        if (firstTextField) {
+            firstTextField.addEventListener('focus', revealGame);
+        }
+    } else {
+        revealGame();
+    }
+}
+
+function setupGame() {
+    // Setup logic here...
     time = 60;
     document.getElementById('startButton').style.display = 'none'; // Hide the start button
     completedRounds = 0; // Reset completed rounds
+}
 
-    // Show the game elements
+function revealGame() {
+    // Reveal game elements...
     document.getElementById('gamePlay').style.display = 'flex';
     document.getElementById('timer').style.display = 'flex';
     Array.from(document.getElementsByClassName('square')).forEach(square => square.style.display = 'flex');
@@ -133,6 +141,7 @@ async function startGame() {
 
     playGame(10); // Start the game with 10 rounds
 }
+
 
 // Add a click event listener to the start button
 document.getElementById('startButton').addEventListener('click', startGame);
