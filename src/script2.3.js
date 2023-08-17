@@ -122,6 +122,7 @@ async function startGame() {
     completedRounds = 0; // Reset completed rounds
 
     // Show the game elements
+    document.getElementById('gamePlay').style.display = 'flex';
     document.getElementById('timer').style.display = 'flex';
     Array.from(document.getElementsByClassName('square')).forEach(square => square.style.display = 'flex');
     document.getElementById('times').style.display = 'flex';
@@ -186,9 +187,23 @@ function playGame(rounds) {
   }
 
 function updateTimer() {
-    let minutes = Math.floor(time / 60);
-    let seconds = Math.floor(time % 60);
-    document.getElementById("timer").innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    // Calculate elapsed time since the round started
+    const elapsed = Date.now() - startTime;
+    remainingTime -= elapsed;
+
+    // If the remaining time is less than or equal to 0, stop the timer and end the game
+    if (remainingTime <= 0) {
+        clearInterval(timerInterval);
+        remainingTime = 0;
+        endGame();
+        return; // Ensure that the function does not proceed after ending the game
+    }
+
+    // Update the timer display
+    timerElement.innerText = formatTime(remainingTime);
+    
+    // Reset startTime to the current time
+    startTime = Date.now();
 }
 
 function formatTime(time) {
@@ -211,14 +226,9 @@ function formatTime(time) {
 function endGame() {
     clearInterval(timerInterval);
 
-    let resultsMessage = "Nice Job!<br>";
+    let resultsMessage = "Nice Job!";
 
     for(let i = 0; i < 10; i++) {
-        // Add a line break after the first 5 emojis
-        if(i === 5) {
-            resultsMessage += "<br>";
-        }
-
         if(i < completedRounds) {
             resultsMessage += '🍔';
         } else {
