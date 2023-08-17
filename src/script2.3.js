@@ -108,11 +108,14 @@ function isMobileDevice() {
 //START GAME----------------------------------------------------------------------------------
 async function startGame() {
     if (isMobileDevice()) {
+    setTimeout(() => {
         const firstTextField = document.querySelector('input[type="text"]');
         if (firstTextField) {
             firstTextField.focus();
         }
-    }
+    }, 100);
+}
+
     // First, fetch the words and wait until they're loaded
     await fetchWords();
     console.log("All words after fetching:", allWords);
