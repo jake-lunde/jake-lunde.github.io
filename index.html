@@ -9,10 +9,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200;10..48,300;10..48,400;10..48,500;10..48,600;10..48,700;10..48,800&display=swap" rel="stylesheet">
   </head>
 <body>
-    <div id="startScreen">
-        <div id="startGraphic"></div>
-        <button id="startButton">Word Burger</button>
+    <div class="start-graphic" id="preGame">
+      <div class="image-title">
+        <svg
+          class="burger-image"
+          width="50"
+          height="57"
+          viewBox="0 0 50 57"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_232_65)">
+            <path
+              d="M46.4962 46.6566V52.2451C46.4962 52.9286 45.9412 53.486 45.2607 53.486H4.73943C4.05893 53.486 3.50391 52.9286 3.50391 52.2451V46.6566H46.4962Z"
+              fill="#E2A85A"
+            />
+            <path
+              d="M43.8948 37.9661V43.1377H6.10522V37.9661H7.60619H42.3938H43.8948Z"
+              fill="#A37231"
+            />
+            <path
+              d="M42.3938 31.8638H7.6062V34.4472H42.3938V31.8638Z"
+              fill="#B5DD35"
+            />
+            <path
+              d="M44.9662 16.4214C46.0328 19.0291 46.5492 21.7773 46.4913 24.5885V27.5161C46.4913 27.9765 46.1245 28.3449 45.6708 28.3449H4.32912C3.87545 28.3449 3.50866 27.9765 3.50866 27.5161V24.5885C3.45074 21.7773 3.96715 19.0291 5.03375 16.4214C6.10035 13.8186 7.66406 11.4921 9.67661 9.5097C11.694 7.5273 14.054 6.00052 16.694 4.96327C19.3388 3.92603 22.3069 3.51404 25 3.51404C27.693 3.51404 30.6612 3.92603 33.306 4.96327C35.9459 6.00052 38.306 7.5273 40.3233 9.5097C42.3359 11.4921 43.8996 13.8186 44.9662 16.4214Z"
+              fill="#E2A85A"
+            />
+            <path
+              d="M50 46.6566V52.2452C50 54.8722 47.8764 57 45.2606 57H4.73938C2.12355 57 0 54.8722 0 52.2452V44.5918C0 43.7872 0.651544 43.1378 1.44788 43.1378H2.60135V34.9319C2.60135 34.6653 2.81853 34.4472 3.08398 34.4472H4.10714V31.8492C1.82432 31.7329 0.00482625 29.8378 0.00482625 27.5161V24.6176C-0.0530888 21.3362 0.550193 18.1276 1.79537 15.0885C3.04054 12.0349 4.86969 9.31582 7.22973 6.99898C9.58494 4.68214 12.3407 2.89847 15.4199 1.68673C18.9768 0.290816 22.5917 0 25 0C27.4083 0 31.0232 0.290816 34.5801 1.68673C37.6593 2.89847 40.4151 4.68214 42.7703 6.99898C45.1303 9.31582 46.9595 12.0349 48.2046 15.0885C49.4498 18.1276 50.0531 21.3362 49.9952 24.6176V27.5161C49.9952 29.8378 48.1757 31.7329 45.8929 31.8492V34.4472H46.916C47.1815 34.4472 47.3986 34.6653 47.3986 34.9319V43.1378H48.5521C49.3485 43.1378 50 43.7872 50 44.5918V46.6566ZM46.4961 52.2452V46.6566H3.50386V52.2452C3.50386 52.9286 4.05888 53.486 4.73938 53.486H45.2606C45.9411 53.486 46.4961 52.9286 46.4961 52.2452ZM46.4913 24.5885C46.5492 21.7773 46.0328 19.0291 44.9662 16.4214C43.8996 13.8186 42.3359 11.4921 40.3234 9.50969C38.306 7.5273 35.9459 6.00051 33.306 4.96327C30.6612 3.92602 27.693 3.51403 25 3.51403C22.3069 3.51403 19.3388 3.92602 16.694 4.96327C14.0541 6.00051 11.694 7.5273 9.67664 9.50969C7.66409 11.4921 6.10039 13.8186 5.03378 16.4214C3.96718 19.0291 3.45077 21.7773 3.50869 24.5885V27.5161C3.50869 27.9765 3.87548 28.3449 4.32915 28.3449H45.6708C46.1245 28.3449 46.4913 27.9765 46.4913 27.5161V24.5885ZM43.8948 43.1378V37.9661H6.10521V43.1378H43.8948ZM42.3938 34.4472V31.8638H7.60618V34.4472H42.3938Z"
+              fill="black"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_232_65">
+              <rect width="50" height="57" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+        <div class="title">Word Burger</div>
+      </div>
+      <div class="content">
+        <div class="copy">
+          Find the word that fits alphabetically between two others.
+        </div>
+        <div class="start-button" id="gameButton">
+          <div class="play">Play</div>
+        </div>
+      </div>
     </div>
+
     <div id="gamePlay">
       <div class="timeElements">
         <div id="timer">00:00:00</div>
@@ -40,6 +86,9 @@
         <div class="square" data-letter="letter9"></div>
         <div class="square" data-letter="letter10"></div>
       </div>
+      <div data-keyboard="keyboard" class="keyboard-wrapper"><div class="keyboard-row"><a data-key="q" href="#" class="key w-button">q</a><a data-key="w" href="#" class="key w-button">w</a><a data-key="e" href="#" class="key w-button">e</a><a data-key="r" href="#" class="key w-button">r</a><a data-key="t" href="#" class="key w-button">t</a><a data-key="y" href="#" class="key w-button">y</a><a data-key="u" href="#" class="key w-button">u</a><a data-key="i" href="#" class="key w-button">i</a><a data-key="o" href="#" class="key w-button">o</a><a data-key="p" href="#" class="key last w-button">p</a></div><div class="keyboard-row"><a data-key="a" href="#" class="key w-button">a</a><a data-key="s" href="#" class="key w-button">s</a><a data-key="d" href="#" class="key w-button">d</a><a data-key="f" href="#" class="key w-button">f</a><a data-key="g" href="#" class="key w-button">g</a><a data-key="h" href="#" class="key w-button">h</a><a data-key="j" href="#" class="key w-button">j</a><a data-key="k" href="#" class="key w-button">k</a><a data-key="l" href="#" class="key last w-button">l</a></div><div class="keyboard-row"><a data-key="enter" href="#" class="key bigger w-button">enter</a><a data-key="z" href="#" class="key w-button">z</a><a data-key="x" href="#" class="key w-button">x</a><a data-key="c" href="#" class="key w-button">c</a><a data-key="v" href="#" class="key w-button">v</a><a data-key="b" href="#" class="key w-button">b</a><a data-key="n" href="#" class="key w-button">n</a><a data-key="m" href="#" class="key w-button">m</a><a data-key="delete" href="#" class="key last bigger w-inline-block"><div class="icon-backspace clickable-off w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+          <path fill="currentColor" d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path>
+        </svg></div></a></div></div>
     </div>
     <div id="results">
         <div id="totalTime"></div>

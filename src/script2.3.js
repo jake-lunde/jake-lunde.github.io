@@ -109,30 +109,21 @@ function isMobileDevice() {
 
 //START GAME----------------------------------------------------------------------------------
 async function startGame() {
-    await fetchWords();
-    console.log("All words after fetching:", allWords);
-
-    setupGame();
-
     if (isMobileDevice()) {
         const firstTextField = document.querySelector('input[type="text"]');
         if (firstTextField) {
-            firstTextField.addEventListener('focus', revealGame);
+            firstTextField.focus();
         }
-    } else {
-        revealGame();
     }
-}
+    // First, fetch the words and wait until they're loaded
+    await fetchWords();
+    console.log("All words after fetching:", allWords);
 
-function setupGame() {
-    // Setup logic here...
     time = 60;
-    document.getElementById('startButton').style.display = 'none'; // Hide the start button
+    document.getElementById('preGame').style.display = 'none'; // Hide the start button
     completedRounds = 0; // Reset completed rounds
-}
 
-function revealGame() {
-    // Reveal game elements...
+    // Show the game elements
     document.getElementById('gamePlay').style.display = 'flex';
     document.getElementById('timer').style.display = 'flex';
     Array.from(document.getElementsByClassName('square')).forEach(square => square.style.display = 'flex');
@@ -144,7 +135,7 @@ function revealGame() {
 
 
 // Add a click event listener to the start button
-document.getElementById('startButton').addEventListener('click', startGame);
+document.getElementById('gameButton').addEventListener('click', startGame);
 
 
 
@@ -235,69 +226,6 @@ function formatTime(time) {
   return `${secondsStringPadded}.${hundredthsStringPadded}`;
 }
 
-function endGame() {
-    clearInterval(timerInterval);
-
-    let resultsMessage = "Nice Job!";
-
-    for(let i = 0; i < 10; i++) {
-        if(i < completedRounds) {
-            resultsMessage += '🍔';
-        } else {
-            resultsMessage += '🕳';
-        }
-    }
-
-    message.innerHTML = resultsMessage;
-
-    const squares = document.getElementsByClassName('square');
-    const form = document.querySelector('.form');
-    Array.from(squares).forEach(square => square.style.display = 'none');
-    form.style.display = 'none';
-    timerElement.style.display = 'none'; // Hide the timer element
-
-    // Display the total time taken
-    document.getElementById("totalTime").textContent = `Total Time: ${formatTime((60 - time) * 1000)}`;
-
-    // Populate the hidden form fields with data
-    document.getElementById("Score").value = resultsMessage;
-    document.getElementById("Time").value = `${formatTime((60 - time) * 1000)} S`
-
-    // Show the form for submitting score
-    const submitScoreForm = document.getElementById("submitScoreForm");
-    submitScoreForm.style.display = "flex";
-
-    // Prevent the form from redirecting
-submitScoreForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    // Fetch form data
-    const formData = new FormData(submitScoreForm);
-
-    // Send the form data using fetch to your desired endpoint
-    fetch('https://script.google.com/macros/s/AKfycby13UMJ1GUZIzpMQPT_hLPeVVsWDdGNMVl7Dxsh2-qJ_G4ZCSW2LjSI0oZiiXFdhbzk/exec', { // Replace '/your-submission-endpoint' with your actual endpoint
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert("Thanks for playtesting Word Burger! Come back tomorrow to flip some more burgers!");
-        // Handle the response from the server here, if needed.
-        console.log(data);
-                // Refresh the page
-        window.location.reload();
-    })
-    .catch(error => {
-        console.error("There was an error submitting the form:", error);
-        alert("Oops, there was an error submitting your form. Please try again.");
-    });
-});
-
-}
-
-
-
-
 //START ROUND----------------------------------------------------------------------------------
   function startRound() {
 
@@ -366,6 +294,54 @@ function stopTimer() {
       }
     });
   });
+
+//CUSTOM KEYBOARD INPUT--------------------------------------------------------------------------
+  document.addEventListener('DOMContentLoaded', function() {
+      const customKeyboard = document.querySelector('[data-keyboard="keyboard"]');
+      const keys = document.querySelectorAll('.key');
+      let currentFocusedInput = null;
+
+      // Detect if the user is on a mobile device
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      // If mobile, set the input fields to readonly and display custom keyboard on click/touch
+      if (isMobile) {
+          letterInputs.forEach(input => {
+              input.setAttribute('readonly', true);
+              input.addEventListener('click', function() {
+                  currentFocusedInput = input;
+                  customKeyboard.style.display = 'block'; // Adjust this to show your keyboard. You can use other styles/effects if desired.
+              });
+          });
+      }
+
+      // Keyboard key functionality
+      keys.forEach(key => {
+          key.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+
+              if (!currentFocusedInput) return;
+
+              const keyValue = key.getAttribute('data-key');
+
+              if (keyValue === 'enter') {
+                  validateWord(); // Assuming this is what you want to do with the enter key
+              } else if (keyValue === 'delete') {
+                  currentFocusedInput.value = ''; // Clear the input field
+              } else {
+                  currentFocusedInput.value = keyValue; // Set the input value to the key's value
+
+                  const event = new Event('input', {
+                      'bubbles': true,
+                      'cancelable': true
+                  });
+                  currentFocusedInput.dispatchEvent(event); // Trigger the input event manually
+              }
+          });
+      });
+  });
+
 
 
 //VALIDATE WORD----------------------------------------------------------------------------------

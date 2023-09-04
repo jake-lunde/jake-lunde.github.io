@@ -2,6 +2,7 @@
       display: flex;
       position: relative;
       background: #121213;
+      height: 100vh;
       color: #FFF;
       justify-content: center;
       margin: auto;
@@ -9,10 +10,6 @@
       overflow: hidden;
       font-family: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
         'Helvetica Neue', sans-serif;
-    }
-
-    #startGraphic {
-      
     }
 
     .timeElements {
@@ -47,8 +44,8 @@
       font: 800 32px/48px "Bricolage Grotesque", sans-serif;
       text-transform: uppercase;
       width: 60%;
-    }
 
+    }
 
     .row {
       display: flex;
@@ -123,17 +120,9 @@
       border: none;
     }
 
-    #letter1 {
-      border-radius: 100px 0px 0px 100px;
-    }
-
-    #letter5 {
-      border-radius: 0px 100px 100px 0px;
-    }
-
     input:valid {
       background: #A37231;
-      border-radius: inherit;
+      border-radius: 100px;
     }
 
     input:focus-visible {
@@ -183,8 +172,85 @@
       position: relative;
     }
 
-    #submitScoreForm{
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    .start-graphic {
+  background: #ffffff;
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #dcdcdc;
+  border-width: 1px;
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+.image-title {
+  background: #f9c16d;
+  flex-shrink: 0;
+  width: 278.67px;
+  height: 193.8px;
+  position: relative;
+}
+.title {
+  color: #000000;
+  text-align: center;
+  font: 400 30px/30.8px "KarnakPro-CondensedBlack", sans-serif;
+  position: absolute;
+  left: 73.54px;
+  top: 137px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.burger-image {
+  position: absolute;
+  left: 115px;
+  top: 48px;
+  overflow: visible;
+}
+.content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.copy {
+  color: #959595;
+  text-align: center;
+  font: 500 14px/20px "Inter", sans-serif;
+  position: relative;
+  width: 235px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.start-button {
+  border-radius: 44px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-width: 1px;
+  padding: 10.59px 104.92px 12.41px 103.75px;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.play {
+  color: #333333;
+  text-align: center;
+  font: 700 14px/20.8px "Inter", sans-serif;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
